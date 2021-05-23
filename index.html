@@ -15,9 +15,25 @@
   
   <div class='wave -two'></div>
   <div class='wave -three'></div>
-  <div class='title'>Urdu Image will be here</div>
+  <div class='title'><img id="imgDisplay" src="Assets/1.png"></div>
 </div>
+
+  <button onclick="next()"> Click me</button>
 <!-- partial -->
   
 </body>
 </html>
+
+<script>
+var imgNumber =1;
+
+  function next(){
+    
+    
+    imgNumber=Math.floor(Math.random() * 10) +1;
+    console.log(imgNumber);
+    document.getElementById("imgDisplay").src = "Assets/"+imgNumber+".png";
+
+
+  }
+</script>
