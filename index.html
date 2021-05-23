@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Waves</title>
+  <title>Urdu Voice Trainer - Semester Project Pattern Recognition</title>
   <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./style.css">
 
@@ -33,6 +33,16 @@ var imgNumber =1;
     imgNumber=Math.floor(Math.random() * 9) +1;
     console.log(" Request New Image")
     document.getElementById("imgDisplay").src = "Assets/"+imgNumber+".png";
+
+   // wrongAnswer(); Debugging Purpose
+
+  }
+
+  function wrongAnswer(){
+
+    var audio = new Audio('voice/incorrect_'+imgNumber+'_voice.m4a');
+    audio.play();
+
 
 
   }
