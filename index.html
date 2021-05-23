@@ -68,7 +68,7 @@
   <div class="four wide column ">
 <br><br><br><br>
     
-    <div class="ui centered grid">
+    <div id="buttons" class="ui centered grid">
 
       <button  onclick="init()" class="massive ui button circular google plus icon ">
         <i class="microphone  icon"></i>
@@ -77,7 +77,7 @@
         <i class="arrow alternate circle right outline  icon"></i>
       </button>
     </div>
-    <div class='loader loader--snake'></div>
+    <div id="responseAudio" class='loader loader--snake' style="display: none;"></div>
 
   </div>
   <div class="four wide column"></div>
@@ -112,10 +112,7 @@ var imgNumber =1;
 var points =0;
   function next(){
 
-    ++points;
-    $('#example2').progress({
-  percent: points*20
-});
+  
 
     
     imgNumber=Math.floor(Math.random() * 9) +1;
@@ -136,11 +133,7 @@ var points =0;
   }
 
 
-
-  // more documentation available at
-    // https://github.com/tensorflow/tfjs-models/tree/master/speech-commands
-
-    // the link to your model provided by Teachable Machine export panel
+ 
     const URL = "http://localhost:8080/Urdu-Voice-Trainer/model/";
 
     async function createModel() {
@@ -189,19 +182,68 @@ var points =0;
 
                 console.log("indexOfMaxValue = " + (indexOfMaxValue+1)); // prints "indexOfMaxValue = 2"
 
+                if(imgNumber == (indexOfMaxValue+1)){
+                  console.log("Correct!!");
+                }else{
+                  console.log("Wrong Answer")
+
+                }
                 
 
             }
 
     
-            if(indexOfMaxValue+1 != 10){
+            if(indexOfMaxValue+1 != 10 && (imgNumber != (indexOfMaxValue+1))){
+              var x = document.getElementById("buttons");
+                if (x.style.display === "none") {
+                  x.style.display = "block";
+                } else {
+                  x.style.display = "none";
+                }
 
-            
-var audio = new Audio('voice/incorrect_'+(indexOfMaxValue+1)+'_voice.m4a');
-audio.play();
+                var x = document.getElementById("responseAudio");
+                  if (x.style.display === "none") {
+                    x.style.display = "block";
+                  } else {
+                    x.style.display = "none";
+                  }           
+              setTimeout(() => {
+                var x = document.getElementById("buttons");
+                if (x.style.display === "none") {
+                  x.style.display = "block";
+                } else {
+                  x.style.display = "none";
+                }
+
+                var x = document.getElementById("responseAudio");
+                  if (x.style.display === "none") {
+                    x.style.display = "block";
+                  } else {
+                    x.style.display = "none";
+                  }   
+    
+              }
+
+              , 7000);
+
+                var audio = new Audio('voice/incorrect_'+(imgNumber)+'_voice.m4a');
+                audio.play();
 
 
-}
+          } else if(indexOfMaxValue+1 != 10 && (imgNumber == (indexOfMaxValue+1))){ 
+       
+
+            setTimeout(() => {
+              ++points;
+            $('#example2').progress({
+            percent: points*20
+              });
+              next();
+    
+              }
+
+              , 2000);
+          }
           
 
         }, {
