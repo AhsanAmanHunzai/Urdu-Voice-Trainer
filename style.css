@@ -6,11 +6,7 @@ html {
   background: #eee;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+ 
 
 .box {
   width: 300px;
@@ -21,6 +17,7 @@ body {
   position: relative;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
+  
 }
 
 .wave {
@@ -61,6 +58,7 @@ body {
   background: linear-gradient(to bottom, #ee88aa, rgba(221, 238, 255, 0) 80%, rgba(255, 255, 255, 0.5));
   z-index: 11;
   transform: translate3d(0, 0, 0);
+
 }
 
 .title {
