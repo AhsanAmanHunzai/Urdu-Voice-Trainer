@@ -73,7 +73,7 @@
       <button  onclick="init()" class="massive ui button circular google plus icon ">
         <i class="microphone  icon"></i>
       </button>
-      <button    class="massive ui button circular twitter  icon ">
+      <button  onclick="next()"  class="massive ui button circular twitter  icon ">
         <i class="arrow alternate circle right outline  icon"></i>
       </button>
     </div>
@@ -102,7 +102,21 @@
 
 
 
+ <!-- modals -->
+
+ <div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    👏👏👏  Congrates!! You Have completed the Quiz!! 😀😀😀
+  </div>
  
+  <div class="actions">
+
+    <div onclick="location.reload()"class="ui button">OK</div>
+  </div>
+</div>
+
+ <!-- modal end -->
 
 
 </html>
@@ -112,7 +126,7 @@ var imgNumber =1;
 var points =0;
   function next(){
 
-  
+ 
 
     
     imgNumber=Math.floor(Math.random() * 9) +1;
@@ -225,6 +239,7 @@ var points =0;
               }
 
               , 7000);
+              recognizer.stopListening();
 
                 var audio = new Audio('voice/incorrect_'+(imgNumber)+'_voice.m4a');
                 audio.play();
@@ -234,11 +249,19 @@ var points =0;
        
 
             setTimeout(() => {
+              // recognizer.stopListening();
               ++points;
             $('#example2').progress({
             percent: points*20
               });
               next();
+
+
+              if ((points*20) == 100){
+                $('.ui.modal')
+               .modal('show')
+                ;
+              }
     
               }
 
